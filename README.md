@@ -1,3 +1,24 @@
+## What problem are you trying to solve?
+	In my free time, I sometimes enjoy watching gameplay of new video games, which I personally can't afford to buy at the moment. I believe there are many people like me who enjoy doing so as well. I'm not a fan of Twitch and I prefer watching videos on Youtube because it's less hardcore in my view and I'm not a hardcore gamer. It would be great to have a web application that tracks your favorite video games and provide an accessible feed of recent youtube videos of these games.
+## Who is the primary audience?
+	The primary audience would be people who casually play video games and enjoy watching gameplays instead of purchasing the game. 
+## How will the project requirements be fulfilled?
+	There will be three main navigation routes. One will provide a search form to look video games. The search form will use the GET method to fetch a list of games from an API like Gamespot's or IGN's. The search form will implement form validation before submitting the GET request. Games will be displayed in custom cards - a custom component I will make to display some information about the game. The user will be able to add games to their favorite list. 
+
+	Another view will display a list of favorite games in cards. Clicking on a game will show further information about it on the side of the view. This is intended to be a fourth route, which will be nested. Users can remove games from their list. 
+
+	Adding and removing games from the list will display notifications at the top of the page. A third page will display game titles from the favorite list with a scrolling section filled with the most popular gameplay videos from Youtube, which the user can watch on the app. 
+
+	I intend to setup a backend and integrate user creation and authentication in order to store favorite lists in the database. I don't have any experience doing so with React and it's possible I will run in many issues. I believe the application without should satisfy all the requirement, so I will attempt to integrate a backend with user authentication if time allows.
+## Which libraries do you think you will use and for what?
+	I will definitely use Bootsrap for styling. Besides that, I will utilize API from IGN or Gamespot and Youtube to fetch data about games and videos. I will probably resort to using react-youtube for its youtube video component to embed gameplay videos in the feed page. 
+
+
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
