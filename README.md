@@ -1,3 +1,16 @@
+# Current Status:
+### Create routing (Divert things into their components)
+### Create custom card component
+### Implement game searching with external API & display
+### Implement search form validation
+### Implement adding games to favorite 
+### Implement favorite view 
+### Implement removing games
+### Implement editing games with form validation 
+### Implement youtube video display 
+### Implement side updates 
+
+
 ## What problem are you trying to solve?
 	In my free time, I sometimes enjoy watching gameplay of new video games, which I personally can't afford to buy at the moment. I believe there are many people like me who enjoy doing so as well. I'm not a fan of Twitch and I prefer watching videos on Youtube because it's less hardcore in my view and I'm not a hardcore gamer. It would be great to have a web application that tracks your favorite video games and provide an accessible feed of recent youtube videos of these games.
 ## Who is the primary audience?

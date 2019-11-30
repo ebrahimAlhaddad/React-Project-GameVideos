@@ -20,3 +20,16 @@
 .App-link {
   color: #09d3ac;
 }
+.container{
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
+}
+.col-4{
+  position:fixed;
+}
+
+#sectionTitle{
+  text-align: center;
+  text-decoration: underline;
+}
