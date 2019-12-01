@@ -41,15 +41,15 @@ export default class GameCard extends React.Component {
                     <span className="card_title">{name}</span>
                     <span className="rating">☆{rating}</span>
                     <div>
-                        <span className="card-text">Release Date: {released}</span>
+                        <span className="date">Release Date: {released}</span>
                     </div>
                     <div>
                         <span className="mini-title">Platforms:</span>
-                        {platform_html}
+                        <span className="listing">{platform_html}</span>
                     </div>
                     <div>
                         <span className="mini-title">Genres:</span>
-                        {genre_html}
+                        <span className="listing">{genre_html}</span>
                     </div>
                 </div>
                     <a href="#" class="btn btn-warning">Add to favorite</a>

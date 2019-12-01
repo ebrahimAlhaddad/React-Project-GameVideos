@@ -36,11 +36,30 @@
 
 .card span.card_title{
   font-weight: bold;
-  font-size: 20px;
+  font-size: 100%;
 }
 .card span.rating{
   color:red;
+  font-size:100%;
 }
 .card span.mini-title{
   font-weight: bold;
+  font-size:65%;
+}
+.card span.listing{
+  font-size:60%;
+}
+.card span.date{
+  font-size:50%;
+}
+.card{
+  width: 180px;
+  height:330px;
+  float:right;
+  padding:5px;
+  margin: 10px;
+  font-size:70%;
+}
+.card img{
+  height:120px;
 }

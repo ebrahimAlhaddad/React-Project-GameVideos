@@ -32,10 +32,12 @@ export default class AddGamesPage extends React.Component{
 
     }
 
+    handleClick = (event)=>{
+        this.setState({viewResults:false});
+    }
 
     render(){
         return(
-            
            <Router>
 
                <Route path='/add-games'>
@@ -44,6 +46,12 @@ export default class AddGamesPage extends React.Component{
                 </Route>
 
                 <Route path='/add-games/ViewSearchResults'>
+                    <NavLink to="/add-games">
+                    <button 
+                        className="btn btn-primary"
+                        onClick={this.handleClick}
+                    >Back to Search</button>
+                    </NavLink>
                     <GameCards games={this.state.games}/>
                 </Route>
 
