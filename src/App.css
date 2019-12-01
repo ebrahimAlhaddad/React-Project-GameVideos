@@ -63,3 +63,16 @@
 .card img{
   height:120px;
 }
+
+a.btn.btn-primary.editBtn{
+  width:45%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  color:white;
+}
+a.btn.btn-danger.deleteBtn{
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  width:45%;
+  color:white;
+}

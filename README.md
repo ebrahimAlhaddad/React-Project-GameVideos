@@ -2,9 +2,7 @@
 
 
 ### Implement adding duplicate favorite error message
-### implement custom buttons in cards
-### Implement favorite view 
-### Implement removing games
+### Implement game removal changes favorite view somehow
 ### Implement editing games with form validation 
 ### Implement youtube video display 
 ### Implement side updates 

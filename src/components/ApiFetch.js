@@ -12,7 +12,20 @@ export async function fetchGames(search,platform,genre){
     console.log(games);
     return games;
 }
-
+export async function getFavorites(){
+    const response = await fetch('https://itp404-crud-final-api.herokuapp.com/api/games',{
+        method:"GET",
+        headers:{
+            "Content-Type":"application/json"
+        }
+    });
+    return response.json();
+}
+export async function deleteFavorite(game){
+    await fetch(`https://itp404-crud-final-api.herokuapp.com/api/games/${game.id}`,{
+        method:"DELETE"
+    });
+}
 export async function postFavorite(game){
     //console.log(game);
     const response = await fetch('https://itp404-crud-final-api.herokuapp.com/api/games',{

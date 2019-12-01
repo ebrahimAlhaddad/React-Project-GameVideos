@@ -52,13 +52,10 @@ export default class GameCard extends React.Component {
                         <span className="listing">{genre_html}</span>
                     </div>
                 </div>
+                    {
+                        typeof children === 'function'?(children()):(<div></div>)
+                    }
                     
-                    <a 
-                        className="btn btn-warning"
-                        onClick={()=>postFavorite(this.props.game)}
-                    >
-                        Add to favorite
-                    </a>
             </div>
         );
     }

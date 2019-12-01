@@ -1,6 +1,6 @@
 import React from 'react';
 import GameSearchForm from './GameSearchForm';
-import {fetchGames} from './ApiFetch';
+import {fetchGames,postFavorite} from './ApiFetch';
 import {BrowserRouter as Router, Switch, Route, NavLink, Redirect} from 'react-router-dom';
 import GameCard from './GameCard';
 import GameCards from './GameCardList';
@@ -35,7 +35,14 @@ export default class AddGamesPage extends React.Component{
     handleClick = (event)=>{
         this.setState({viewResults:false});
     }
-
+    clickButton = (game) =>{
+        return(<a 
+            className="btn btn-warning"
+            onClick={()=>postFavorite(game)}
+        >
+                  Add to favorite
+        </a>);
+    }
     render(){
         return(
            <Router>
@@ -52,7 +59,7 @@ export default class AddGamesPage extends React.Component{
                         onClick={this.handleClick}
                     >Back to Search</button>
                     </NavLink>
-                    <GameCards games={this.state.games}/>
+                    <GameCards games={this.state.games.results} clickButton={this.clickButton}/>
                 </Route>
 
            </Router>
