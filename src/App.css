@@ -33,3 +33,14 @@
   text-align: center;
   text-decoration: underline;
 }
+
+.card span.card_title{
+  font-weight: bold;
+  font-size: 20px;
+}
+.card span.rating{
+  color:red;
+}
+.card span.mini-title{
+  font-weight: bold;
+}

@@ -1,9 +1,9 @@
 # Current Status:
-### Create routing (Divert things into their components)
-### Create custom card component
-### Implement game searching with external API & display
-### Implement search form validation
-### Implement adding games to favorite 
+
+
+### Adjust game display
+### Implement posting favorites to in-memory API
+### Implement adding favorite error message
 ### Implement favorite view 
 ### Implement removing games
 ### Implement editing games with form validation 

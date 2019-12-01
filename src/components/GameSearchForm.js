@@ -8,7 +8,6 @@ export default class SearchForm extends React.Component {
       platformValue: '',
       genreValue: '',
       valid: true,
-      changeView: false
     };
   }
   handleSearchInputChange = (event) => {
@@ -29,7 +28,7 @@ export default class SearchForm extends React.Component {
   handleSearch = (event) => {
     event.preventDefault();
     if(this.state.searchValue){
-        this.setState({valid:true,changeView:true});
+        this.setState({valid:true});
         this.props.onSearch(this.state.searchValue,
             this.state.platformValue,
             this.state.genreValue);
