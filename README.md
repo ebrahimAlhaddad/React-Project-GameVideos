@@ -1,9 +1,8 @@
 # Current Status:
 
 
-### Adjust game display
-### Implement posting favorites to in-memory API
-### Implement adding favorite error message
+### Implement adding duplicate favorite error message
+### implement custom buttons in cards
 ### Implement favorite view 
 ### Implement removing games
 ### Implement editing games with form validation 

@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
 import {BrowserRouter as Router, Switch, Route, NavLink} from 'react-router-dom';
-import PageNotFound from './components/PageNotFound'
-import AddGamesPage from './components/AddGamesPage'
+import PageNotFound from './components/PageNotFound';
+import AddGamesPage from './components/AddGamesPage';
+import FavoritesPage from './components/FavoritesPage';
 export default class App extends React.Component{
   render(){
     return(
@@ -46,7 +47,7 @@ export default class App extends React.Component{
 
           </Route>
           <Route path="/videos/" component={PageNotFound} />
-          <Route path="/favorites" component={PageNotFound} />
+          <Route path="/favorites" component={FavoritesPage} />
           <Route path="/add-games" component={AddGamesPage} />
           <Route component={PageNotFound} />
         </Switch>

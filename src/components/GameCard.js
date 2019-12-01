@@ -1,13 +1,13 @@
 import React from 'react'
-
+import {postFavorite} from './ApiFetch'
 export default class GameCard extends React.Component {
     constructor(props){
         super(props);
     }
-
- 
+    
     render(){
         let {background_image,name,genres,platforms,rating,released} = this.props.game;
+        let {children} = this.props;
         let platform_html = ""
         let count = 0;
         if(platforms){
@@ -52,7 +52,13 @@ export default class GameCard extends React.Component {
                         <span className="listing">{genre_html}</span>
                     </div>
                 </div>
-                    <a href="#" class="btn btn-warning">Add to favorite</a>
+                    
+                    <a 
+                        className="btn btn-warning"
+                        onClick={()=>postFavorite(this.props.game)}
+                    >
+                        Add to favorite
+                    </a>
             </div>
         );
     }
