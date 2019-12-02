@@ -1,7 +1,5 @@
-# Current Status:
 
 ---
-### Implement youtube video display 
 ### ??Maybe fix game adding routing??
 
 ## What problem are you trying to solve?

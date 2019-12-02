@@ -1,9 +1,6 @@
 import React from 'react'
-import {postFavorite} from './ApiFetch'
 export default class GameCard extends React.Component {
-    constructor(props){
-        super(props);
-    }
+    
     
     render(){
         let {background_image,name,genres,platforms,rating,released} = this.props.game;

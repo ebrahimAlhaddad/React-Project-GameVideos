@@ -1,6 +1,5 @@
 import React from 'react';
 import GameCard from './GameCard';
-import {postFavorite} from './ApiFetch';
 export default function GameCards(props){
     let {games,clickButton} = props;
     return(
@@ -8,7 +7,7 @@ export default function GameCards(props){
         {
             games? games.map((game)=>{
                 return (<div> 
-                            <GameCard game={game}>
+                            <GameCard id={game.id} game={game}>
                             {
                                 ()=>{
                                     return(

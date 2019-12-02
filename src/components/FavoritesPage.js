@@ -2,7 +2,7 @@ import React from 'react';
 import GameCards from './GameCardList';
 import {getFavorites, deleteFavorite, putFavorite} from './ApiFetch';
 import UpdateGameForm from './UpdateGameForm';
-import {BrowserRouter as Router, Switch, Route, NavLink, Redirect} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route, NavLink} from 'react-router-dom';
 
 
 export default class AddGamesPage extends React.Component{

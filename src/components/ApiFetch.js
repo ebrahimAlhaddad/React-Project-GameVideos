@@ -24,7 +24,7 @@ export async function fetchGames(search,platform,genre){
     if(genre){
         url = url + `&genres=${genre}`;
     }
-    console.log(url);
+    //console.log(url);
     let response = await fetch(url);
     let games = response.json();
     console.log(games);
@@ -67,7 +67,7 @@ export async function postFavorite(game){
            callNotification("success","Success!",`${game.name} was successfully added to favorites!`
            );
         }
-    else if(response.status == 504){
+    else if(response.status === 504){
             callNotification("warning","Already Added!",`${game.name} is already in favorites`);
     }else{
             callNotification("danger","Failed!",`Adding ${game.name} failed. Refresh page and Try again`)
@@ -101,9 +101,26 @@ export async function putFavorite(id,title,rating,released,platform,genre){
             genres:[genre_obj]
         })
     });
-    if(response.status == 204){
+    if(response.status === 204){
         callNotification("success","Success!",`${title} was successfully edited`);
     }else{
         callNotification("danger","Failed!",`Editing ${title} failed. Refresh page and Try again`)
     }
+}
+
+export async function searchYoutube(games){
+    let final = [];
+    let response = '';
+    for(var i = 0; i < games.length; i++){
+        response = await fetch(`https://www.googleapis.com/youtube/v3/search?q=${games[i].name}%20gameplay&key=AIzaSyAufAV1kRcgEM_TQ-57CW41smHOL6zv6kg&part=snippet&maxResults=3&type=video`,{
+            method: 'GET',
+            headers:{
+                "Content-Type": "application/json",
+            }
+        }).then((response) => response.json())
+        .then((responseJSON) => {
+           final.push(responseJSON);
+        });;
+    }
+    return final;
 }

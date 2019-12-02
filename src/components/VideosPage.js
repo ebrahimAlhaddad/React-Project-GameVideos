@@ -1,25 +1,46 @@
 import React from 'react';
-import {getFavorites} from './ApiFetch';
+import {getFavorites, searchYoutube} from './ApiFetch';
 import YouTube from 'react-youtube';
 export default class VideosPage extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            favoriteGames:[]
+            favoriteGames:[],
+            videosResults:[]
         }
     }
     async componentDidMount(){
         let favoriteGames = await getFavorites();
         this.setState({favoriteGames});
+        let videosResults = await searchYoutube(favoriteGames);
+        this.setState({videosResults});
+        //console.log(videosResults);
     }
 
     render(){
         return(
-            <YouTube
-        videoId="2g811Eo7K8U"
-        onReady={this._onReady}
-      />
+            <div>
+            {
+                this.state.videosResults.map((videoList)=>{
+                    return(
+                        
+                            videoList.items.map((item)=>{
+                                return(
+                                    <YouTube
+                                    id={item.id.videoId}
+                                    videoId={item.id.videoId}
+                                    onReady={this._onReady}
+                                  />
+                            
+                                )
+                            }) 
+                        
+                    )
+                })
+            }
+           </div> 
         );
     
     }
+            
 }
