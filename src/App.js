@@ -4,19 +4,21 @@ import {BrowserRouter as Router, Switch, Route, NavLink} from 'react-router-dom'
 import PageNotFound from './components/PageNotFound';
 import AddGamesPage from './components/AddGamesPage';
 import FavoritesPage from './components/FavoritesPage';
+import ReactNotification from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
 export default class App extends React.Component{
+  
   render(){
     return(
     <div>
 
-    
+    <ReactNotification />
     <div className="jumbotron jumbotron-fluid header">
       <div className="container">
           <h1 className="display-4">GameVideos</h1>
           <p className="lead" >Explore recent gameplays from your favoite games</p>
         </div>
     </div>
-
     <Router>
     <div className="container">
       <div className="row">

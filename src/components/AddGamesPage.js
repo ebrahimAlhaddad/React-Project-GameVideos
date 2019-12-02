@@ -2,8 +2,8 @@ import React from 'react';
 import GameSearchForm from './GameSearchForm';
 import {fetchGames,postFavorite} from './ApiFetch';
 import {BrowserRouter as Router, Switch, Route, NavLink, Redirect} from 'react-router-dom';
-import GameCard from './GameCard';
 import GameCards from './GameCardList';
+
 export default class AddGamesPage extends React.Component{
     constructor(props){
         super(props);
@@ -14,7 +14,7 @@ export default class AddGamesPage extends React.Component{
             test:{}
         };
     }
- 
+    
     handleSearch = async (search,platform,genre) => {
         this.setState({ loading: true });
     
@@ -45,6 +45,7 @@ export default class AddGamesPage extends React.Component{
     }
     render(){
         return(
+
            <Router>
 
                <Route path='/add-games'>

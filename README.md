@@ -1,11 +1,10 @@
 # Current Status:
 
 
-### Implement adding duplicate favorite error message
 ### Implement game removal changes favorite view somehow
 ### Implement editing games with form validation 
 ### Implement youtube video display 
-### Implement side updates 
+### Implement side updates (editing game)
 
 
 ## What problem are you trying to solve?
