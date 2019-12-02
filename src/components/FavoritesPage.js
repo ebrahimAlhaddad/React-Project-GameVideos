@@ -15,19 +15,22 @@ export default class AddGamesPage extends React.Component{
     }
 
     async componentDidMount(){
-        this.loadGames();
-    }
-    loadGames = async()=>{
         let favoriteGames = await getFavorites();
-        console.log(favoriteGames);
         this.setState({favoriteGames});
     }
     
+    handleDelete = async (game)=>{
+        await deleteFavorite(game);
+        let favoriteGames = await getFavorites();
+        this.setState({favoriteGames});
+        //console.log(this.state.favoriteGames);
+ 
+    }
     clickButton = (game) =>{
         return(
         <div>
             <a className="btn btn-danger deleteBtn"
-            onClick={()=>deleteFavorite(game)}>
+            onClick={()=>this.handleDelete(game)}>
                   Delete
              </a>
             <NavLink to={`/favorites/ViewUpdateForm/${game.id}`}>
@@ -43,7 +46,10 @@ export default class AddGamesPage extends React.Component{
         this.setState({viewForm:false});
     }
     handleUpdate = async (id,title,rating,released,platform,genre)=>{
-        putFavorite(id,title,rating,released,platform,genre);
+        await putFavorite(id,title,rating,released,platform,genre);
+        let favoriteGames = await getFavorites();
+        this.setState({favoriteGames});
+        //console.log(this.state.favoriteGames);
     }
     render(){
         return(
@@ -59,7 +65,7 @@ export default class AddGamesPage extends React.Component{
                     </Route>
      
                      <Route path='/favorites/ViewUpdateForm/:id' 
-                     render={(props) => <UpdateGameForm {...props} onSearch={this.handleUpdate} />}/>
+                     render={(props) => <UpdateGameForm {...props} onSubmit={this.handleUpdate} />}/>
                          
                      </Switch>
                 </Router>

@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Switch, Route, NavLink} from 'react-router-dom'
 import PageNotFound from './components/PageNotFound';
 import AddGamesPage from './components/AddGamesPage';
 import FavoritesPage from './components/FavoritesPage';
+import VideosPage from './components/VideosPage';
 import ReactNotification from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
 export default class App extends React.Component{
@@ -48,7 +49,7 @@ export default class App extends React.Component{
           </h4>
 
           </Route>
-          <Route path="/videos/" component={PageNotFound} />
+          <Route path="/videos/" component={VideosPage} />
           <Route path="/favorites" component={FavoritesPage} />
           <Route path="/add-games" component={AddGamesPage} />
           <Route component={PageNotFound} />

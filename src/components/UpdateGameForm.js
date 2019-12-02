@@ -70,9 +70,11 @@ export default class UpdateGameForm extends React.Component {
       }
       if(this.state.releasedValid && this.state.titleValid && this.state.ratingValid){
 
-        this.props.onSearch(this.state.id,this.state.title,this.state.rating,this.state.released,
+        this.props.onSubmit(this.state.id,this.state.title,this.state.rating,this.state.released,
         this.state.platformValue,
         this.state.genreValue);
+
+        this.props.history.push('/favorites');
       }
     }
     render() {

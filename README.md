@@ -1,9 +1,6 @@
 # Current Status:
 
 ---
-### Implement game removal changes favorite view somehow
-### Implement game edit updates the view 
-### Implement rerouting back to favorite from edit form
 ### Implement youtube video display 
 ### ??Maybe fix game adding routing??
 
