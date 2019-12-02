@@ -11,7 +11,6 @@ export default class AddGamesPage extends React.Component{
             loading:true,
             games: [],
             viewResults: false,
-            test:{}
         };
     }
     
@@ -19,16 +18,10 @@ export default class AddGamesPage extends React.Component{
         this.setState({ loading: true });
     
         let games = await fetchGames(search,platform,genre);
-        const test = games.results.find((elem) => {
-            return elem.id === 23833;
-        });
         this.setState({ games, 
             viewResults:true, 
             loading: false, 
-            viewResults:true,
-            test: test
         });
-        console.log(this.state.test);
 
     }
 

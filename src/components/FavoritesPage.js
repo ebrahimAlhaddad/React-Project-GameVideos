@@ -1,6 +1,6 @@
 import React from 'react';
 import GameCards from './GameCardList';
-import {getFavorites, postFavorite,deleteFavorite} from './ApiFetch';
+import {getFavorites, deleteFavorite, putFavorite} from './ApiFetch';
 import UpdateGameForm from './UpdateGameForm';
 import {BrowserRouter as Router, Switch, Route, NavLink, Redirect} from 'react-router-dom';
 
@@ -22,9 +22,7 @@ export default class AddGamesPage extends React.Component{
         console.log(favoriteGames);
         this.setState({favoriteGames});
     }
-    updateGame = async(game)=>{
-        this.setState({viewForm:true});
-    }
+    
     clickButton = (game) =>{
         return(
         <div>
@@ -32,40 +30,38 @@ export default class AddGamesPage extends React.Component{
             onClick={()=>deleteFavorite(game)}>
                   Delete
              </a>
-
+            <NavLink to={`/favorites/ViewUpdateForm/${game.id}`}>
             <a className="btn btn-primary editBtn"
-             onClick={()=>this.updateGame(game)}>
+            >
                  Edit
              </a>
+             </NavLink>
         </div>
         );
     }
     handleClick = (event)=>{
         this.setState({viewForm:false});
     }
+    handleUpdate = async (id,title,rating,released,platform,genre)=>{
+        putFavorite(id,title,rating,released,platform,genre);
+    }
     render(){
         return(
  
 
                 <Router>
-     
-                    <Route path='/favorites'>
-                         {this.state.viewForm ? <Redirect to="/favorites/ViewUpdateForm" /> : 
+                    <Switch>
+                    <Route exact path='/favorites'>
+
                          <GameCards games={this.state.favoriteGames} 
                          clickButton={this.clickButton}/>
-                         }
+
                     </Route>
      
-                     <Route path='/favorites/ViewUpdateForm'>
-                         <NavLink to="/favorites">
-                         <button 
-                             className="btn btn-primary"
-                             onClick={this.handleClick}
-                         >Back to Favorites</button>
-                         </NavLink>
-                         <UpdateGameForm/>
-                     </Route>
-     
+                     <Route path='/favorites/ViewUpdateForm/:id' 
+                     render={(props) => <UpdateGameForm {...props} onSearch={this.handleUpdate} />}/>
+                         
+                     </Switch>
                 </Router>
         );
     }

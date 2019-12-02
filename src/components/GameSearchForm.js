@@ -35,7 +35,7 @@ export default class SearchForm extends React.Component {
 
     } else {
         this.setState({valid:false});
-
+        console.log(this.state.valid);
     }
 
   }

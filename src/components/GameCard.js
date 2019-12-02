@@ -8,7 +8,8 @@ export default class GameCard extends React.Component {
     render(){
         let {background_image,name,genres,platforms,rating,released} = this.props.game;
         let {children} = this.props;
-        let platform_html = ""
+        let platform_html = "";
+        let genre_html = "";
         let count = 0;
         if(platforms){
             platforms.map((platform)=>{
@@ -20,7 +21,7 @@ export default class GameCard extends React.Component {
                 }
             });
         }
-        let genre_html = ""
+        
         count = 0;
         if(genres){
             genres.map((genre)=>{

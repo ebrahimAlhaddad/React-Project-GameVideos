@@ -1,4 +1,6 @@
 import {store} from 'react-notifications-component';
+import valueToGenre from './valueToGenre';
+import valueToPlatform from './valueToPlatform';
 function callNotification(type,title,body){
     store.addNotification({
         title: title,
@@ -73,6 +75,35 @@ export async function postFavorite(game){
     
 }
 
-export async function updateFavorite(game){
-    
+export async function putFavorite(id,title,rating,released,platform,genre){
+    const genre_name = valueToGenre(genre);
+    const platform_name = valueToPlatform(platform);
+    const platform_obj = {
+        platform:{
+            id:platform,
+            name:platform_name
+        }
+    };
+    const genre_obj = {
+            id:genre,
+            name:genre_name
+    };
+    const response = await fetch(`https://itp404-crud-final-api.herokuapp.com/api/games/${id}`,{
+        method:"PUT",
+        headers:{
+            "Content-Type": "application/json"
+        },
+        body:JSON.stringify({
+            name:title,
+            rating:rating,
+            released:released,
+            platforms:[platform_obj],
+            genres:[genre_obj]
+        })
+    });
+    if(response.status == 204){
+        callNotification("success","Success!",`${title} was successfully edited`);
+    }else{
+        callNotification("danger","Failed!",`Editing ${title} failed. Refresh page and Try again`)
+    }
 }

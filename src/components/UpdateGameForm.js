@@ -1,20 +1,36 @@
 import React from 'react';
-
+import moment from 'moment';
+import {NavLink} from 'react-router-dom';
 export default class UpdateGameForm extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        searchValue: '',
+        title: '',
+        rating:'',
+        released:'',
         platformValue: '',
         genreValue: '',
-        valid: true,
+        id:this.props.match.params.id,
+        titleValid: true,
+        ratingValid: true,
+        releasedValid: true
       };
     }
-    handleSearchInputChange = (event) => {
+    handleTitleInputChange = (event) => {
       this.setState({
-        searchValue: event.target.value
+        title: event.target.value
       });
     }
+    handleRatingInputChange = (event) => {
+        this.setState({
+          rating: event.target.value
+        });
+      }
+      handleReleasedInputChange = (event) => {
+        this.setState({
+          released: event.target.value
+        });
+      }
     handlePlatformChange = (event) => {
         this.setState({
             platformValue: event.target.value
@@ -25,43 +41,103 @@ export default class UpdateGameForm extends React.Component {
           genreValue: event.target.value
       });
   }
-    handleSearch = (event) => {
+     handleSubmit = async (event) => {
       event.preventDefault();
-      if(this.state.searchValue){
-          this.setState({valid:true});
-          this.props.onSearch(this.state.searchValue,
-              this.state.platformValue,
-              this.state.genreValue);
-  
+      if(this.state.title){
+         await this.setState({titleValid:true});
       } else {
-          this.setState({valid:false});
-  
+        await this.setState({titleValid:false});
       }
-  
+
+      if(isNaN(this.state.rating)){
+        await this.setState({ratingValid:false});
+      } else {
+        if(Number(this.state.rating) <= 5 && Number(this.state.rating) >= 0){
+            await this.setState({ratingValid:true});
+        } else {
+            await this.setState({ratingValid:false});
+        }
+      }
+      
+      if(moment(this.state.released, "YYYY-MM-DD", true).isValid()){
+          if(moment().isAfter(this.state.released)){
+            await this.setState({releasedValid:true});
+          }else{
+            await this.setState({releasedValid:false});
+          }
+      } else {
+        await this.setState({releasedValid:false});
+      }
+      if(this.state.releasedValid && this.state.titleValid && this.state.ratingValid){
+
+        this.props.onSearch(this.state.id,this.state.title,this.state.rating,this.state.released,
+        this.state.platformValue,
+        this.state.genreValue);
+      }
     }
     render() {
       return (
-        <form onSubmit={this.handleSearch}>
+        <div>
+           <NavLink to="/favorites">
+                    <button 
+                        className="btn btn-primary"
+                    >Back to Search</button>
+                    </NavLink>
+        <form onSubmit={this.handleSubmit}>
             <div className="form-group">
-  
               <label>Title</label>
-                  {this.state.valid? (
+                  {this.state.titleValid? (
                        <input className="form-control"
                        type="text"
-                       value={this.state.searchValue}
-                        onChange={this.handleSearchInputChange} />
+                       value={this.state.title}
+                        onChange={this.handleTitleInputChange} />
                   ):(
                       <div>
                       <input className="form-control is-invalid"
                        type="text"
-                       value={this.state.searchValue}
-                        onChange={this.handleSearchInputChange} />
+                       value={this.state.title}
+                        onChange={this.handleTitleInputChange} />
                        <span className="text-danger">You must enter a title</span>
                        </div>
                   )}
-                  
             </div>
-          
+
+            <div className="form-group">
+              <label>Rating</label>
+                  {this.state.ratingValid? (
+                       <input className="form-control"
+                       type="text"
+                       value={this.state.rating}
+                        onChange={this.handleRatingInputChange} />
+                  ):(
+                      <div>
+                      <input className="form-control is-invalid"
+                       type="text"
+                       value={this.state.rating}
+                        onChange={this.handleRatingInputChange} />
+                       <span className="text-danger">You must enter a valid rating(0-5)</span>
+                       </div>
+                  )}
+            </div>
+
+            <div className="form-group">
+              <label>Release Date</label>
+                  {this.state.releasedValid? (
+                       <input className="form-control"
+                       type="date"
+                       value={this.state.released}
+                        onChange={this.handleReleasedInputChange} />
+                  ):(
+                      <div>
+                      <input className="form-control is-invalid"
+                       type="date"
+                       value={this.state.released}
+                        onChange={this.handleReleasedInputChange} />
+                       <span className="text-danger">You must enter a valid date</span>
+                       </div>
+                  )}
+            </div>
+
             <div className="form-group">
               <label>Platform</label>
               <select className="form-control" 
@@ -131,8 +207,10 @@ export default class UpdateGameForm extends React.Component {
               </select>
             </div>
   
-          <button className="btn btn-primary" type="submit">Search</button>
+          <button className="btn btn-primary" type="submit">Submit</button>
         </form>
+        </div>
+
       );
     }
   }
