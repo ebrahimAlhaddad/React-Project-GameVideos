@@ -31,10 +31,18 @@ export default class GameCard extends React.Component {
                 
             });
         }
-        
+        let no_image = false;
+        if(background_image == null){
+            no_image = true;
+        }
+
         return(
             <div key={key} className="card">
-                <img className="card-img-top" src={background_image} alt="Card image cap"/>
+                {no_image?(<img className="card-img-top" src='https://icon-library.net/images/no-image-available-icon/no-image-available-icon-6.jpg' alt="Card image cap"/>
+                ):(
+                    <img className="card-img-top" src={background_image} alt="Card image cap"/>
+                )}
+                
                 <div className="card-body">
                     <span className="card_title">{name}</span>
                     <span className="rating">☆{rating}</span>

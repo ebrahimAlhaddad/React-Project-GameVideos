@@ -6,6 +6,7 @@
     "moment": "^2.24.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
+    "react-loader-spinner": "^3.1.5",
     "react-notifications-component": "^2.2.3",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",

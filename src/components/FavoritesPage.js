@@ -3,6 +3,7 @@ import GameCards from './GameCardList';
 import {getFavorites, deleteFavorite, putFavorite} from './ApiFetch';
 import UpdateGameForm from './UpdateGameForm';
 import {BrowserRouter as Router, Switch, Route, NavLink} from 'react-router-dom';
+import Loader from 'react-loader-spinner';
 
 
 export default class AddGamesPage extends React.Component{
@@ -10,13 +11,14 @@ export default class AddGamesPage extends React.Component{
         super(props);
         this.state = {
             favoriteGames:[],
-            viewForm: false
+            viewForm: false,
+            loading:true
         };
     }
 
     async componentDidMount(){
         let favoriteGames = await getFavorites();
-        this.setState({favoriteGames});
+        this.setState({favoriteGames,loading:false});
     }
     
     handleDelete = async (game)=>{
@@ -46,8 +48,9 @@ export default class AddGamesPage extends React.Component{
     }
     handleUpdate = async (id,title,rating,released,platform,genre)=>{
         await putFavorite(id,title,rating,released,platform,genre);
+        this.setState({loading:true});
         let favoriteGames = await getFavorites();
-        this.setState({favoriteGames});
+        this.setState({favoriteGames,loading:false});
         //console.log(this.state.favoriteGames);
     }
     render(){
@@ -59,6 +62,12 @@ export default class AddGamesPage extends React.Component{
                     <Route exact path='/favorites'>
                         <div>
                         <h3>Favorite Games</h3>
+                        {this.state.loading && <Loader
+                        type="Puff"
+                        color="#3056FF"
+                        height={100}
+                        width={100}
+                        timeout={3000} />}
                         <GameCards games={this.state.favoriteGames} 
                          clickButton={this.clickButton}/>
                         </div>

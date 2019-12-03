@@ -5,8 +5,9 @@ import PageNotFound from './components/PageNotFound';
 import AddGamesPage from './components/AddGamesPage';
 import FavoritesPage from './components/FavoritesPage';
 import VideosPage from './components/VideosPage';
-import ReactNotification from 'react-notifications-component'
-import 'react-notifications-component/dist/theme.css'
+import ReactNotification from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 export default class App extends React.Component{
   
   render(){
