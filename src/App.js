@@ -17,7 +17,7 @@ export default class App extends React.Component{
     <div className="jumbotron jumbotron-fluid header">
       <div className="container">
           <h1 className="display-4">GameVideos</h1>
-          <p className="lead" >Explore recent gameplays from your favoite games</p>
+          <p className="lead" >Explore recent gameplays from your favorite games</p>
         </div>
     </div>
     <Router>

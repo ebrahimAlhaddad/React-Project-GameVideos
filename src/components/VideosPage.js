@@ -20,6 +20,8 @@ export default class VideosPage extends React.Component{
     render(){
         return(
             <div>
+             <h3>Video Feed</h3>
+
             {
                 this.state.videosResults.map((videoList)=>{
                     return(

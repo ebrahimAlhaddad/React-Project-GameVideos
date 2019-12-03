@@ -33,11 +33,10 @@ export default class AddGamesPage extends React.Component{
             onClick={()=>this.handleDelete(game)}>
                   Delete
              </a>
-            <NavLink to={`/favorites/ViewUpdateForm/${game.id}`}>
-            <a className="btn btn-primary editBtn"
-            >
+            <NavLink to={`/favorites/ViewUpdateForm/${game.id}`} className="btn btn-primary editBtn">
+           
                  Edit
-             </a>
+ 
              </NavLink>
         </div>
         );
@@ -58,9 +57,12 @@ export default class AddGamesPage extends React.Component{
                 <Router>
                     <Switch>
                     <Route exact path='/favorites'>
-
-                         <GameCards games={this.state.favoriteGames} 
+                        <div>
+                        <h3>Favorite Games</h3>
+                        <GameCards games={this.state.favoriteGames} 
                          clickButton={this.clickButton}/>
+                        </div>
+                        
 
                     </Route>
      

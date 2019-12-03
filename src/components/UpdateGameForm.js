@@ -80,6 +80,7 @@ export default class UpdateGameForm extends React.Component {
     render() {
       return (
         <div>
+          <h3>Favorite Games > Edit Game</h3>
            <NavLink to="/favorites">
                     <button 
                         className="btn btn-primary"

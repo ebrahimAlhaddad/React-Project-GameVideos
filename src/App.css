@@ -55,7 +55,7 @@
 .card{
   width: 180px;
   height:330px;
-  float:right;
+  float:left;
   padding:5px;
   margin: 10px;
   font-size:70%;

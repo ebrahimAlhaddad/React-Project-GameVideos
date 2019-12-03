@@ -6,8 +6,8 @@ export default function GameCards(props){
     <div className="container-fluid">
         {
             games? games.map((game)=>{
-                return (<div> 
-                            <GameCard id={game.id} game={game}>
+                return (<div key={game.id}> 
+                            <GameCard key={game.id} game={game}>
                             {
                                 ()=>{
                                     return(

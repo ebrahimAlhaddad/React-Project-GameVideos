@@ -1,7 +1,7 @@
 import React from 'react';
 import GameSearchForm from './GameSearchForm';
 import {fetchGames,postFavorite} from './ApiFetch';
-import {BrowserRouter as Router, Switch, Route, NavLink, Redirect} from 'react-router-dom';
+import {BrowserRouter as Router, Route, NavLink, Redirect} from 'react-router-dom';
 import GameCards from './GameCardList';
 
 export default class AddGamesPage extends React.Component{
@@ -42,13 +42,22 @@ export default class AddGamesPage extends React.Component{
            <Router>
 
                <Route path='/add-games'>
-                    {this.state.viewResults ? <Redirect to="/add-games/ViewSearchResults" /> : 
-                     <GameSearchForm onSearch={this.handleSearch} />}
+
+                    {this.state.viewResults ? <Redirect to="/add-games/ViewSearchResults" /> :
+                    <div>
+                        <h3>Add Games > Search games</h3>
+                        <GameSearchForm onSearch={this.handleSearch} />
+                    </div>
+
+                    }
+
                 </Route>
 
                 <Route path='/add-games/ViewSearchResults'>
+                <h3>Add Games</h3>
                     <NavLink to="/add-games">
                     <button 
+                    
                         className="btn btn-primary"
                         onClick={this.handleClick}
                     >Back to Search</button>

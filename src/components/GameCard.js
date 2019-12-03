@@ -3,7 +3,7 @@ export default class GameCard extends React.Component {
     
     
     render(){
-        let {background_image,name,genres,platforms,rating,released} = this.props.game;
+        let {background_image,name,genres,platforms,rating,released,key} = this.props.game;
         let {children} = this.props;
         let platform_html = "";
         let genre_html = "";
@@ -33,7 +33,7 @@ export default class GameCard extends React.Component {
         }
         
         return(
-            <div className="card">
+            <div key={key} className="card">
                 <img className="card-img-top" src={background_image} alt="Card image cap"/>
                 <div className="card-body">
                     <span className="card_title">{name}</span>
