@@ -4,13 +4,17 @@ import {NavLink} from 'react-router-dom';
 export default class UpdateGameForm extends React.Component {
     constructor(props) {
       super(props);
+      var game_id = 0;
+      if(this.props.match != undefined){
+        game_id = this.props.match.params.id;
+      }
       this.state = {
         title: '',
         rating:'',
         released:'',
         platformValue: '',
         genreValue: '',
-        id:this.props.match.params.id,
+        id:game_id,
         titleValid: true,
         ratingValid: true,
         releasedValid: true
@@ -44,21 +48,25 @@ export default class UpdateGameForm extends React.Component {
      handleSubmit = async (event) => {
       event.preventDefault();
       if(this.state.title){
-         await this.setState({titleValid:true});
+         this.setState({titleValid:true});
       } else {
-        await this.setState({titleValid:false});
+         this.setState({titleValid:false});
       }
 
-      if(isNaN(this.state.rating)){
-        await this.setState({ratingValid:false});
+      if(!this.state.rating){
+        this.setState({ratingValid:false});
       } else {
-        if(Number(this.state.rating) <= 5 && Number(this.state.rating) >= 0){
-            await this.setState({ratingValid:true});
+        if(isNaN(this.state.rating)){
+          this.setState({ratingValid:false});
         } else {
-            await this.setState({ratingValid:false});
+          if(Number(this.state.rating) <= 5 && Number(this.state.rating) >= 0){
+              this.setState({ratingValid:true});
+          } else {
+              this.setState({ratingValid:false});
+          }
         }
       }
-      
+
       if(moment(this.state.released, "YYYY-MM-DD", true).isValid()){
           if(moment().isAfter(this.state.released)){
             await this.setState({releasedValid:true});
@@ -68,13 +76,14 @@ export default class UpdateGameForm extends React.Component {
       } else {
         await this.setState({releasedValid:false});
       }
-      if(this.state.releasedValid && this.state.titleValid && this.state.ratingValid){
 
+      if(this.state.releasedValid && this.state.titleValid && this.state.ratingValid){
         this.props.onSubmit(this.state.id,this.state.title,this.state.rating,this.state.released,
         this.state.platformValue,
         this.state.genreValue);
-
-        this.props.history.push('/favorites');
+        if(this.props.history){
+          this.props.history.push('/favorites');
+        }
       }
     }
     render() {
@@ -90,17 +99,17 @@ export default class UpdateGameForm extends React.Component {
             <div className="form-group">
               <label>Title</label>
                   {this.state.titleValid? (
-                       <input className="form-control"
+                       <input data-testid="input-title" className="form-control"
                        type="text"
                        value={this.state.title}
                         onChange={this.handleTitleInputChange} />
                   ):(
                       <div>
-                      <input className="form-control is-invalid"
+                      <input data-testid="input-title" className="form-control is-invalid"
                        type="text"
                        value={this.state.title}
                         onChange={this.handleTitleInputChange} />
-                       <span className="text-danger">You must enter a title</span>
+                       <span data-testid="input-title-error" className="text-danger">You must enter a title</span>
                        </div>
                   )}
             </div>
@@ -108,17 +117,19 @@ export default class UpdateGameForm extends React.Component {
             <div className="form-group">
               <label>Rating</label>
                   {this.state.ratingValid? (
-                       <input className="form-control"
+                    <div>
+                       <input data-testid="input-rating" className="form-control"
                        type="text"
                        value={this.state.rating}
                         onChange={this.handleRatingInputChange} />
+                    </div>
                   ):(
                       <div>
-                      <input className="form-control is-invalid"
+                      <input data-testid="input-rating" className="form-control is-invalid"
                        type="text"
                        value={this.state.rating}
-                        onChange={this.handleRatingInputChange} />
-                       <span className="text-danger">You must enter a valid rating(0-5)</span>
+                       onChange={this.handleRatingInputChange} />
+                       <span data-testid="input-rating-error" className="text-danger">You must enter a valid rating(0-5)</span>
                        </div>
                   )}
             </div>
@@ -126,24 +137,24 @@ export default class UpdateGameForm extends React.Component {
             <div className="form-group">
               <label>Release Date</label>
                   {this.state.releasedValid? (
-                       <input className="form-control"
+                       <input data-testid="input-date" className="form-control"
                        type="date"
                        value={this.state.released}
                         onChange={this.handleReleasedInputChange} />
                   ):(
                       <div>
-                      <input className="form-control is-invalid"
+                      <input data-testid="input-date" className="form-control is-invalid"
                        type="date"
                        value={this.state.released}
                         onChange={this.handleReleasedInputChange} />
-                       <span className="text-danger">You must enter a valid date</span>
+                       <span data-testid="input-date-error" className="text-danger">You must enter a valid date</span>
                        </div>
                   )}
             </div>
 
             <div className="form-group">
               <label>Platform</label>
-              <select className="form-control" 
+              <select data-testid="input-platform" className="form-control" 
               value={this.state.platformValue}
               onChange={this.handlePlatformChange}
               >
@@ -182,7 +193,7 @@ export default class UpdateGameForm extends React.Component {
   
             <div className="form-group">
               <label>Genre</label>
-              <select className="form-control" 
+              <select  data-testid="input-genre" className="form-control" 
               value={this.state.genreValue}
               onChange={this.handleGenreChange}
               >
@@ -206,11 +217,11 @@ export default class UpdateGameForm extends React.Component {
               <option value="28">Board Games</option>
               <option value="34">Educational</option>
               <option value="17">Card</option>
-  
+
               </select>
             </div>
   
-          <button className="btn btn-primary" type="submit">Submit</button>
+          <button data-testid="submit-btn" className="btn btn-primary" type="submit">Submit</button>
         </form>
         </div>
 

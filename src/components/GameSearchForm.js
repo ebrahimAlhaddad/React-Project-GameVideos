@@ -46,7 +46,7 @@ export default class SearchForm extends React.Component {
 
             <label>Title</label>
                 {this.state.valid? (
-                     <input className="form-control"
+                     <input data-testid="input-searchValue" className="form-control"
                      type="text"
                      value={this.state.searchValue}
                       onChange={this.handleSearchInputChange} />
@@ -56,7 +56,7 @@ export default class SearchForm extends React.Component {
                      type="text"
                      value={this.state.searchValue}
                       onChange={this.handleSearchInputChange} />
-                     <span className="text-danger">You must enter a title</span>
+                     <span data-testid="input-searchValue-error" className="text-danger">You must enter a title</span>
                      </div>
                 )}
                 
