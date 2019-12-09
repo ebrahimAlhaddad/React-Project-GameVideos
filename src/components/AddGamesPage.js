@@ -4,7 +4,7 @@ import {fetchGames,postFavorite} from './ApiFetch';
 import {BrowserRouter as Router, Route, Switch,NavLink, Redirect} from 'react-router-dom';
 import GameCards from './GameCardList';
 import Loader from 'react-loader-spinner';
-
+import PageNotFound from './PageNotFound';
 export default class AddGamesPage extends React.Component{
     constructor(props){
         super(props);
@@ -55,7 +55,7 @@ export default class AddGamesPage extends React.Component{
 
                 </Route>
 
-                <Route path='/add-games/ViewSearchResults'>
+                <Route exact='true' path='/add-games/ViewSearchResults'>
                 <h3>Add Games</h3>
                     <NavLink to="/add-games">
                     <button 
@@ -72,6 +72,7 @@ export default class AddGamesPage extends React.Component{
                     timeout={3000} />}
                     <GameCards games={this.state.games.results} clickButton={this.clickButton}/>
                 </Route>
+                <Route component={PageNotFound} />
                 </Switch>
            </Router>
 

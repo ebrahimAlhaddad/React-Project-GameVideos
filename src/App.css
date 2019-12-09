@@ -76,3 +76,12 @@ a.btn.btn-danger.deleteBtn{
   width:45%;
   color:white;
 }
+
+a.active{
+  color: black !important;
+}
+
+.jumbotron.jumbotron-fluid.header{
+  background-image: url('bannerImage.png');
+  color: white;
+}

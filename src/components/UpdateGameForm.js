@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import {NavLink} from 'react-router-dom';
+import {getFavorite} from './ApiFetch';
 export default class UpdateGameForm extends React.Component {
     constructor(props) {
       super(props);
@@ -8,6 +9,8 @@ export default class UpdateGameForm extends React.Component {
       if(this.props.match != undefined){
         game_id = this.props.match.params.id;
       }
+      const game = getFavorite(game_id);
+      //console.log(game);
       this.state = {
         title: '',
         rating:'',
@@ -19,6 +22,10 @@ export default class UpdateGameForm extends React.Component {
         ratingValid: true,
         releasedValid: true
       };
+    }
+    async componentDidMount(){
+      const game = await getFavorite(this.state.id);
+      this.setState({title:game.name, rating:game.rating, released:game.released});      
     }
     handleTitleInputChange = (event) => {
       this.setState({
@@ -93,7 +100,7 @@ export default class UpdateGameForm extends React.Component {
            <NavLink to="/favorites">
                     <button 
                         className="btn btn-primary"
-                    >Back to Search</button>
+                    >Back to Favorites</button>
                     </NavLink>
         <form onSubmit={this.handleSubmit}>
             <div className="form-group">

@@ -50,7 +50,7 @@ export default class App extends React.Component{
           </h4>
 
           </Route>
-          <Route path="/videos/" component={VideosPage} />
+          <Route exact path="/videos/" component={VideosPage} />
           <Route path="/favorites" component={FavoritesPage} />
           <Route path="/add-games" component={AddGamesPage} />
           <Route component={PageNotFound} />

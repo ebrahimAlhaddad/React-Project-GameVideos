@@ -1,11 +1,9 @@
+[![Build Status](https://travis-ci.com/ITP-Webdev/final-project-proposal-ebrahimAlhaddad.svg?token=azUiwqdEPn2Uqm2ts3KP&branch=master)](https://travis-ci.com/ITP-Webdev/final-project-proposal-ebrahimAlhaddad)
 
+## Front-End: well-off-feast.surge.sh
+## Back-End: https://itp404-crud-final-api.herokuapp.com/api/games/
 ---
-### adjust in-memory server gateway
-### update readme with links to in-memory server and link
-### Test everything in app
-### final styling touches
-### deploy app to final-repo 
-### Make the video 
+
 
 ## What problem are you trying to solve?
 	In my free time, I sometimes enjoy watching gameplay of new video games, which I personally can't afford to buy at the moment. I believe there are many people like me who enjoy doing so as well. I'm not a fan of Twitch and I prefer watching videos on Youtube because it's less hardcore in my view and I'm not a hardcore gamer. It would be great to have a web application that tracks your favorite video games and provide an accessible feed of recent youtube videos of these games.

@@ -4,7 +4,7 @@ import {getFavorites, deleteFavorite, putFavorite} from './ApiFetch';
 import UpdateGameForm from './UpdateGameForm';
 import {BrowserRouter as Router, Switch, Route, NavLink} from 'react-router-dom';
 import Loader from 'react-loader-spinner';
-
+import PageNotFound from './PageNotFound';
 
 export default class AddGamesPage extends React.Component{
     constructor(props){
@@ -75,9 +75,10 @@ export default class AddGamesPage extends React.Component{
 
                     </Route>
      
-                     <Route path='/favorites/ViewUpdateForm/:id' 
+                     <Route exact path='/favorites/ViewUpdateForm/:id' 
                      render={(props) => <UpdateGameForm {...props} onSubmit={this.handleUpdate} />}/>
-                         
+                     <Route component={PageNotFound} />
+
                      </Switch>
                 </Router>
         );

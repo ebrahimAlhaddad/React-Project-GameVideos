@@ -27,7 +27,7 @@ export async function fetchGames(search,platform,genre){
     //console.log(url);
     let response = await fetch(url);
     let games = response.json();
-    console.log(games);
+    //console.log(games);
     return games;
 }
 export async function getFavorites(){
@@ -39,6 +39,17 @@ export async function getFavorites(){
     });
     return response.json();
 }
+
+export async function getFavorite(id){
+    const response = await fetch(`https://itp404-crud-final-api.herokuapp.com/api/games/${id}`,{
+        method:"GET",
+        headers:{
+            "Content-Type":"application/json"
+        }
+    });
+    return response.json();
+}
+
 export async function deleteFavorite(game){
     const response = await fetch(`https://itp404-crud-final-api.herokuapp.com/api/games/${game.id}`,{
         method:"DELETE"
@@ -62,7 +73,7 @@ export async function postFavorite(game){
         },
         body:JSON.stringify(game)
     });
-    console.log(response.status);
+    //console.log(response.status);
     if(response.status === 204){
            callNotification("success","Success!",`${game.name} was successfully added to favorites!`
            );
