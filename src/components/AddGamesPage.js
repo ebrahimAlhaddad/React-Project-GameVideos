@@ -43,7 +43,7 @@ export default class AddGamesPage extends React.Component{
 
            <Router>
 <Switch>
-               <Route exact path='/add-games'>
+               <Route exact={true} path='/add-games'>
 
                     {this.state.viewResults ? <Redirect to="/add-games/ViewSearchResults" /> :
                     <div>
@@ -55,7 +55,7 @@ export default class AddGamesPage extends React.Component{
 
                 </Route>
 
-                <Route exact='true' path='/add-games/ViewSearchResults'>
+                <Route exact={true} path='/add-games/ViewSearchResults'>
                 <h3>Add Games</h3>
                     <NavLink to="/add-games">
                     <button 

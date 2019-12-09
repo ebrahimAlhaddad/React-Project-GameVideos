@@ -1,8 +1,15 @@
 [![Build Status](https://travis-ci.com/ITP-Webdev/final-project-proposal-ebrahimAlhaddad.svg?token=azUiwqdEPn2Uqm2ts3KP&branch=master)](https://travis-ci.com/ITP-Webdev/final-project-proposal-ebrahimAlhaddad)
 
-## Front-End: well-off-feast.surge.sh
-## Back-End: https://itp404-crud-final-api.herokuapp.com/api/games/
+- Front-End: http://pathetic-coast.surge.sh
+- Back-End: https://itp404-crud-final-api.herokuapp.com/api/games/
+- Link to Server Repo (Github): https://github.com/ebrahimAlhaddad/itp404-crud-final-api
+- Link to Server Repo (Heroku): https://dashboard.heroku.com/apps/itp404-crud-final-api
+- Video Link: https://youtu.be/XxBqQKIpgyY
 ---
+
+## add link to youtube video in readme 
+## push
+
 
 
 ## What problem are you trying to solve?

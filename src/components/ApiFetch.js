@@ -16,6 +16,7 @@ function callNotification(type,title,body){
         }
       });
 }
+var API_Link = 'https://itp404-crud-final-api.herokuapp.com/api/games';
 export async function fetchGames(search,platform,genre){
     let url = `https://api.rawg.io/api/games?search=${search}`;
     if(platform){

@@ -59,7 +59,7 @@ export default class AddGamesPage extends React.Component{
 
                 <Router>
                     <Switch>
-                    <Route exact path='/favorites'>
+                    <Route exact={true} path='/favorites'>
                         <div>
                         <h3>Favorite Games</h3>
                         {this.state.loading && <Loader
@@ -75,7 +75,7 @@ export default class AddGamesPage extends React.Component{
 
                     </Route>
      
-                     <Route exact path='/favorites/ViewUpdateForm/:id' 
+                     <Route exact={true} path='/favorites/ViewUpdateForm/:id' 
                      render={(props) => <UpdateGameForm {...props} onSubmit={this.handleUpdate} />}/>
                      <Route component={PageNotFound} />
 
