@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/ITP-Webdev/final-project-proposal-ebrahimAlhaddad.svg?token=azUiwqdEPn2Uqm2ts3KP&branch=master)](https://travis-ci.com/ITP-Webdev/final-project-proposal-ebrahimAlhaddad)
+
 
 - Front-End: http://pathetic-coast.surge.sh
 - Back-End: https://itp404-crud-final-api.herokuapp.com/api/games/
